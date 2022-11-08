@@ -309,8 +309,11 @@ script = ExtResource( 2 )
 [node name="mainBase" parent="." instance=ExtResource( 4 )]
 position = Vector2( 660, 946 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1141, 1348 )
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
-[node name="KinematicBody2D2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 149, 1328 )
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 361, 1185 )
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

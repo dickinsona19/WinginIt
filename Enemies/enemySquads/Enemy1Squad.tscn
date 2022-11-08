@@ -72,5 +72,8 @@ percent_visible = false
 
 [node name="attackTimer" type="Timer" parent="."]
 
+[node name="deathTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="AgroRange" to="." method="_on_AgroRange_body_entered"]
 [connection signal="timeout" from="attackTimer" to="." method="_on_attackTimer_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_deathTimer_timeout" flags=6]

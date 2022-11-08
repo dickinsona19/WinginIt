@@ -21,6 +21,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not isFighting and not isWalkingToFight:
+		hittingBody=null
 	whenSelected()
 	if isBought:
 		if mouseInside and Input.is_action_just_pressed("confirm_buy"):
@@ -31,13 +33,16 @@ func _process(delta):
 	if not isBought:
 		position = get_global_mouse_position()
 		modulate.a = 0.5
+		$AgroRange.visible = false
+		$CollisionShape2D.visible = false
 		if Input.is_action_just_pressed("confirm_buy"):
 			isBought = true
 			modulate.a = 1
+			$AgroRange.visible = true
+			$CollisionShape2D.visible = true
 		if Input.is_action_just_pressed("cancel_buy"):
 			queue_free()
 			
-
 	isMovingFunction(delta)
 	if hittingBody != null:
 		processDeadEnemy()
@@ -87,13 +92,13 @@ func _on_Timer_timeout():
 	
 
 func processDeadEnemy():
-		if hittingBody.dead:
-			isFighting= false
-			isWalkingToFight = false
-			$attackTimer.stop()
-			hittingBody = null
-			
-			
+	if hittingBody.dead:
+		isFighting= false
+		isWalkingToFight = false
+		$attackTimer.stop()
+		hittingBody = null
+		
+		
 func processWalkingToFight(delta):
 	if isWalkingToFight:
 		position = position.move_toward(Vector2(hittingBody.position.x -95, hittingBody.position.y +25), delta*speed)

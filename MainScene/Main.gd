@@ -14,3 +14,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_SpawnTimer_timeout():
+	var enemy = load("res://Enemies/enemySquads/Enemy1Squad.tscn")
+	var instancedEnemy = enemy.instance()
+	var randVar = randi()%4
+	if randVar == 0:
+		instancedEnemy.position = Vector2($mainBase.position.x + randi() % 100+500, $mainBase.position.y + randi() % 100 +500)
+	if randVar == 1:
+		instancedEnemy.position = Vector2($mainBase.position.x + randi() % 100+500, $mainBase.position.y + randi() % -100 -500)
+	if randVar == 2:
+		instancedEnemy.position = Vector2($mainBase.position.x + randi() % -100-500, $mainBase.position.y + randi() % -100 -500)
+	if randVar == 3:
+		instancedEnemy.position = Vector2($mainBase.position.x + randi() % -100-500, $mainBase.position.y + randi() % 100 +500)
+	
+	add_child(instancedEnemy)

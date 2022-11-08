@@ -25,8 +25,8 @@ func _process(delta):
 		
 	if dead:
 		$attackTimer.stop()
-		queue_free()
-		
+		visible = false
+		$deathTimer.start()
 	
 
 func processCombat():
@@ -45,3 +45,9 @@ func _on_AgroRange_body_entered(body):
 		hittingBody = body
 		processCombat()
 		print("dmg")
+
+
+
+
+func _on_deathTimer_timeout():
+	queue_free()
