@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://people/person.tscn" type="PackedScene" id=1]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 126.254
+[ext_resource path="res://Squad/MeeleTroopSquad.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 251.149
 
-[node name="MeeleTroopSquad" type="Node2D"]
+[sub_resource type="CircleShape2D" id=1]
+radius = 126.254
+
+[node name="MeeleTroopSquad" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+script = ExtResource( 2 )
 
 [node name="Node2D4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 0 )
@@ -23,14 +26,15 @@ position = Vector2( -75, 0 )
 [node name="Node2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -75 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( -2, -44 )
-shape = SubResource( 1 )
-
 [node name="AgroRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange"]
 position = Vector2( -2, -44 )
 shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -44 )
+shape = SubResource( 1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_MeeleTroopSquad_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MeeleTroopSquad_mouse_exited"]
