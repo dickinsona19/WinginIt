@@ -3,7 +3,7 @@ extends Camera2D
 
 var fixed_toggle_point = Vector2(0,0)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed('move_map'):
 		var ref = get_viewport().get_mouse_position()
 		fixed_toggle_point = ref

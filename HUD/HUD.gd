@@ -6,7 +6,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if isbuying and Input.is_action_just_pressed("cancel_buy") or Input.is_action_just_pressed("confirm_buy"):
 		isbuying = false
 
