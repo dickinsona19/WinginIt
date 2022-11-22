@@ -17,3 +17,32 @@ func _on_MeleeTroopButton_button_up():
 		var troop = instancedMeleeTroop.instance()
 		troop.position = get_global_mouse_position()
 		get_parent().add_child(troop)
+
+
+func _on_buyLootButton_mouse_entered():
+	$CanvasLayer/buyLootButton/BronzeCoin.visible = true
+	$CanvasLayer/buyLootButton/Label.visible = true
+	
+
+
+func _on_buyLootButton_mouse_exited():
+	$CanvasLayer/buyLootButton/BronzeCoin.visible = false
+	$CanvasLayer/buyLootButton/Label.visible = false
+
+
+func _on_buyLootButton_button_up():
+	if isbuying == false:
+		isbuying = true
+		var instancedLootBox = load("res://lootbox/lootbox.tscn")
+		var lootBox = instancedLootBox.instance()
+		lootBox.position = get_global_mouse_position()
+		get_parent().add_child(lootBox)
+
+
+func _on_workerTroopButton_button_up():
+	if isbuying == false:
+		isbuying = true
+		var instancedMeleeTroop = load("res://Squad/workerTroopSquad.tscn")
+		var troop = instancedMeleeTroop.instance()
+		troop.position = get_global_mouse_position()
+		get_parent().add_child(troop)

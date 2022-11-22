@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex"
+path="res://.import/scifiEnvironment_08.png-79b741c920795279bc8a51002a6fdd2f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainScene/medieval_tilesheet.png"
-dest_files=[ "res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex" ]
+source_file="res://Resources/scifiEnvironment_08.png"
+dest_files=[ "res://.import/scifiEnvironment_08.png-79b741c920795279bc8a51002a6fdd2f.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

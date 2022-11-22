@@ -8,6 +8,8 @@ var selected = false
 var movePostion
 var health =10
 var maxHealth = 10
+var dead = false
+var dmg = 5
 
 var isWalkingToFight = false
 var isFighting = false
@@ -21,6 +23,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health == 0:
+		dead = true
+	if dead:
+		$attackTimer.stop()
+		visible = false
+		$deathTimer.start()
+	
 	if not isFighting and not isWalkingToFight:
 		hittingBody=null
 	whenSelected()
@@ -88,7 +97,7 @@ func _on_AgroRange_body_entered(body):
 
 
 func _on_Timer_timeout():
-	hittingBody.health -= 1
+	hittingBody.health -= dmg
 	
 
 func processDeadEnemy():
@@ -102,3 +111,7 @@ func processDeadEnemy():
 func processWalkingToFight(delta):
 	if isWalkingToFight:
 		position = position.move_toward(Vector2(hittingBody.position.x -95, hittingBody.position.y +25), delta*speed)
+
+
+func _on_deathTimer_timeout():
+	queue_free()

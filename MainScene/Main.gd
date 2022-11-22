@@ -1,10 +1,8 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var coins = 0
+var metal = 0
+var food = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,11 +10,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	
+	applyHUDChanges()
 
 
 func _on_SpawnTimer_timeout():
+	
 	var enemy = load("res://Enemies/enemySquads/Enemy1Squad.tscn")
 	var instancedEnemy = enemy.instance()
 	var randVar = randi()%4
@@ -30,3 +30,10 @@ func _on_SpawnTimer_timeout():
 		instancedEnemy.position = Vector2($mainBase.position.x + randi() % -100-500, $mainBase.position.y + randi() % 100 +500)
 	
 	add_child(instancedEnemy)
+	
+	
+
+func applyHUDChanges():
+	$HUD/CanvasLayer/coinsLabel.text = "X : " + str(coins)
+	$HUD/CanvasLayer/metalLabel.text = "X : " + str(metal)
+	$HUD/CanvasLayer/foodLabel.text = "X : " + str(food)

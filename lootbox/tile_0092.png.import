@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex"
+path="res://.import/tile_0092.png-10559b895ded264a6e251bc7e901ed1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainScene/medieval_tilesheet.png"
-dest_files=[ "res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex" ]
+source_file="res://lootbox/tile_0092.png"
+dest_files=[ "res://.import/tile_0092.png-10559b895ded264a6e251bc7e901ed1d.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

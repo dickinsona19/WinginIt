@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex"
+path="res://.import/99_taco.png-989c216e93d4f10144d881d946bef432.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainScene/medieval_tilesheet.png"
-dest_files=[ "res://.import/medieval_tilesheet.png-eb96d6f3563b0ca2beaec3524287b085.stex" ]
+source_file="res://lootbox/lootboxLoot/99_taco.png"
+dest_files=[ "res://.import/99_taco.png-989c216e93d4f10144d881d946bef432.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

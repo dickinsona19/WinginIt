@@ -19,7 +19,7 @@ func _process(delta):
 		position = position.move_toward(get_parent().get_node("mainBase").position, delta*speed)
 	$ProgressBar.value = (float(health)/maxHealth) *100
 	
-	if health ==0:
+	if health <=0:
 		dead = true
 		
 		
@@ -27,16 +27,17 @@ func _process(delta):
 		$attackTimer.stop()
 		visible = false
 		$deathTimer.start()
+		
+		
+	if hittingBody != null:
+		processDeadEnemy()
 	
-
 func processCombat():
 	$attackTimer.start()
-	print("dmg")
 
 
 func _on_attackTimer_timeout():
 	hittingBody.health -= dmg
-	print("dmg")
 
 
 func _on_AgroRange_body_entered(body):
@@ -44,10 +45,17 @@ func _on_AgroRange_body_entered(body):
 		isFighting = true
 		hittingBody = body
 		processCombat()
-		print("dmg")
-
-
 
 
 func _on_deathTimer_timeout():
 	queue_free()
+	
+	
+	
+
+
+func processDeadEnemy():
+	if hittingBody.dead:
+		isFighting= false
+		$attackTimer.stop()
+		hittingBody = null
