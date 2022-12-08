@@ -4,6 +4,7 @@ var maxHealth = 3
 var health = 3
 var dmg = 1
 var dead = false
+signal death
 var hittingBody
 var isFighting = false
 var speed = 50
@@ -24,11 +25,7 @@ func _process(delta):
 		
 		
 	if dead:
-		$attackTimer.stop()
-		visible = false
-		$deathTimer.start()
-		
-		
+		emit_signal("death")
 	if hittingBody != null:
 		processDeadEnemy()
 	
@@ -59,3 +56,10 @@ func processDeadEnemy():
 		isFighting= false
 		$attackTimer.stop()
 		hittingBody = null
+
+
+func _on_KinematicBody2D_death():
+	$attackTimer.stop()
+	visible = false
+	$deathTimer.start()
+	remove_from_group("enemy")

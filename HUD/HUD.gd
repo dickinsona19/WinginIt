@@ -24,7 +24,6 @@ func _on_buyLootButton_mouse_entered():
 	$CanvasLayer/buyLootButton/Label.visible = true
 	
 
-
 func _on_buyLootButton_mouse_exited():
 	$CanvasLayer/buyLootButton/BronzeCoin.visible = false
 	$CanvasLayer/buyLootButton/Label.visible = false
@@ -46,3 +45,36 @@ func _on_workerTroopButton_button_up():
 		var troop = instancedMeleeTroop.instance()
 		troop.position = get_global_mouse_position()
 		get_parent().add_child(troop)
+
+
+func _on_cannonBuyButton_button_up():
+	if isbuying == false:
+		isbuying= true
+		var instancedCannon = load("res://Squad/cannon.tscn")
+		var cannon = instancedCannon.instance()
+		cannon.position = get_global_mouse_position()
+		get_parent().add_child(cannon)
+
+
+func _on_workerTroopButton_mouse_entered():
+	$CanvasLayer/buyWorkerLabel.visible=true
+
+
+func _on_workerTroopButton_mouse_exited():
+	$CanvasLayer/buyWorkerLabel.visible=false
+
+
+func _on_MeleeTroopButton_mouse_entered():
+	$CanvasLayer/buyFighterLabel.visible= true
+
+
+func _on_MeleeTroopButton_mouse_exited():
+	$CanvasLayer/buyFighterLabel.visible= false
+
+
+func _on_cannonBuyButton_mouse_entered():
+	$CanvasLayer/buyCannonLabel.visible = true
+
+
+func _on_cannonBuyButton_mouse_exited():
+	$CanvasLayer/buyCannonLabel.visible = false

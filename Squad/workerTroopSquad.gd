@@ -22,6 +22,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var overLappingBodies = $Range.get_overlapping_bodies()
+	processTarget(overLappingBodies)
 	if isBuying == false:
 		if health <= 0:
 			dead = true
@@ -74,8 +76,9 @@ func isMovingFunction(delta):
 func processMining():
 	if hittingNode != null and isBuying == false:
 		hittingNode.health -=1
-		if hittingNode.health == 0:
+		if hittingNode.mined== true:
 			hittingNode = null
+			$mineTimer.stop()
 
 
 func _on_Range_body_entered(body):
@@ -86,3 +89,9 @@ func _on_Range_body_entered(body):
 
 func _on_mineTimer_timeout():
 	processMining()
+
+func processTarget(overLappingBodies):
+	for i in overLappingBodies:
+		if i.is_in_group("coinResource") and hittingNode == null and isBuying == false:
+			hittingNode= i
+			$mineTimer.start()

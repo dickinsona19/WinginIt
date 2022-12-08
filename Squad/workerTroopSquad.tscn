@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://people/workerTroop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Squad/workerTroopSquad.gd" type="Script" id=2]
@@ -6,9 +6,6 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 115.434
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 297.204
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -48,11 +45,6 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Range" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
-shape = SubResource( 2 )
-
 [node name="Node2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -46 )
 scale = Vector2( 0.5, 0.5 )
@@ -82,5 +74,4 @@ percent_visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_workerTroopSquad_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_workerTroopSquad_mouse_exited"]
-[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="timeout" from="mineTimer" to="." method="_on_mineTimer_timeout"]
